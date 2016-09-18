@@ -33,10 +33,18 @@ void Simplifier::getExpression(ifstream &inputFile){
       //expression is complete once x is read in
     if(expression == "X"){
       groupExpression(myExpression);
+      myExpression.clear();
+      group0.clear();
+      group1.clear();
+      group2.clear();
+      group3.clear();
+      group4.clear();
+      group5.clear();
+    }
+    else{
+      myExpression.push_back(expression);
     }
 
-      //add parts of expression to vector
-    myExpression.push_back(expression);
     inputFile >> expression;
   }
 }
