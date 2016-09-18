@@ -32,7 +32,7 @@ void Simplifier::getExpression(ifstream &inputFile){
 
       //expression is complete once x is read in
     if(expression == "X"){
-      analyzeExpression(myExpression);
+      groupExpression(myExpression);
     }
 
       //add parts of expression to vector
@@ -43,9 +43,52 @@ void Simplifier::getExpression(ifstream &inputFile){
 
 //******************************************************************************
 
-void Simplifier::analyzeExpression(vector<string> myExpression){
+void Simplifier::groupExpression(vector<string> myExpression){
+  int complimentCount = 0;
   for(int x = 0; x < myExpression.size(); x++){
-    cout << myExpression[x] << endl;
+    for(int y = 0; y < myExpression[x].length(); y++){
+      if(islower(myExpression[x][y])){
+        complimentCount++;
+      }
+    }
+    switch(complimentCount){
+      case 0: group0.push_back(myExpression[x]);
+        break;
+      case 1: group1.push_back(myExpression[x]);
+        break;
+      case 2: group2.push_back(myExpression[x]);
+        break;
+      case 3: group3.push_back(myExpression[x]);
+        break;
+      case 4: group4.push_back(myExpression[x]);
+        break;
+      case 5: group5.push_back(myExpression[x]);
+        break;
+    }
+    complimentCount = 0;
+  }
+  for(int x = 0; x < group0.size(); x++){
+    cout << group0[x] << " ";
+  }
+  cout << endl;
+  for(int x = 0; x < group1.size(); x++){
+    cout << group1[x] << " ";
+  }
+  cout << endl;
+  for(int x = 0; x < group2.size(); x++){
+    cout << group2[x] << " ";
+  }
+  cout << endl;
+  for(int x = 0; x < group3.size(); x++){
+    cout << group3[x] << " ";
+  }
+  cout << endl;
+  for(int x = 0; x < group4.size(); x++){
+    cout << group4[x] << " ";
+  }
+  cout << endl;
+  for(int x = 0; x < group5.size(); x++){
+    cout << group5[x] << " ";
   }
 }
 
