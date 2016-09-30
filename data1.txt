@@ -1,3 +1,2 @@
-ABC Abc ABc AbC abC aBc X
-aBcDEf ABcdEF AbCdEF ABCdEF aBCDEf ABCDEF ABcdEf AbCDEF aBcDef X
+ABCD ABcD ABcd AbCD aBCD aBCd aBcD abcD X
 S
