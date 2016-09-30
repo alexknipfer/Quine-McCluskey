@@ -111,13 +111,22 @@ void Simplifier::minimizeExpression(){
 
     //see if expressions exists in group0 and group1
   if(group0.size() != 0 && group1.size() != 0){
+
+      //go through expressions with 0 compliments
     for(int x = 0; x < group0.size(); x++){
 
+        //go through expressions with 1 compliment
       for(int y = 0; y < group1.size(); y++){
 
+          //make sure the expression hasn't already been completed
         if(group1Check[y] != "done"){
 
+            //go through expression to compare variables
           for(int x1 = 0; x1 < group0[x].length(); x1++){
+
+              //if variables in expression are not equal, then it's possible
+              //it can be minimalized, store possible variables in tempVariable
+              //just in case they can be minimalized
             if(group0[x][x1] != group1[y][x1]){
               tempVariable = group0[x][x1];
               tempVariable2 = group1[y][x1];
@@ -125,19 +134,31 @@ void Simplifier::minimizeExpression(){
             }
           } //end x1 loop
 
+            //expressions differ in one variable therefore can be minimalized
           if(foundPairs == 1){
+
+              //go through and replace with '_' to know variable has been removed
             for(int replace = 0; replace < group0[x].length(); replace++){
               if(group0[x][replace] == tempVariable || group0[x][replace] == tempVariable2){
                 tempExpression += '_';
               }
+                //create a temporary expression with variable gone for adding
+                //to vector with new expression
               else{
                 tempExpression += group0[x][replace];
               }
             }
-            group0Check[x] = "done";
-            group1Check[y] = "done";
-            group0New.push_back(tempExpression);
+            group0Check[x] = "done";  //expression is complete
+            group1Check[y] = "done";  //expression is complete
+            group0New.push_back(tempExpression);  //add new expression to vector
+
+              //reset expression and found pairs
             tempExpression = "";
+            foundPairs = 0;
+          }
+
+            //reset found pairs even if the expressions couldn't be minimalized
+          else{
             foundPairs = 0;
           }
 
@@ -149,8 +170,68 @@ void Simplifier::minimizeExpression(){
       }
       cout << endl;
     } //end x loop
-    
+
   } //end if statement
+
+  if(group1.size() != 0 && group2.size() != 0){
+    for(int x = 0; x < group1.size(); x++){
+
+      for(int y = 0; y < group2.size(); y++){
+
+        if(group2Check[y] != "done"){
+
+            //go through expression to compare variables
+          for(int x1 = 0; x1 < group1[x].length(); x1++){
+
+              //if variables in expression are not equal, then it's possible
+              //it can be minimalized, store possible variables in tempVariable
+              //just in case they can be minimalized
+            if(group1[x][x1] != group2[y][x1]){
+              tempVariable = group1[x][x1];
+              tempVariable2 = group2[y][x1];
+              foundPairs++;
+            }
+          } //end x1 loop
+
+            //expressions differ in one variable therefore can be minimalized
+          if(foundPairs == 1){
+
+              //go through and replace with '_' to know variable has been removed
+            for(int replace = 0; replace < group1[x].length(); replace++){
+              if(group1[x][replace] == tempVariable || group1[x][replace] == tempVariable2){
+                tempExpression += '_';
+              }
+
+                //create a temporary expression with variable gone for adding
+                //to vector with new expression
+              else{
+                tempExpression += group1[x][replace];
+              }
+            }
+            group1Check[x] = "done";  //expression is complete
+            group2Check[y] = "done";  //expression is complete
+            group1New.push_back(tempExpression);  //expression is complete
+
+              //reset expression and pairs found
+            tempExpression = "";
+            foundPairs = 0;
+          }
+
+            //reset found pairs even if the expressions couldn't be minimalized
+          else{
+            foundPairs = 0;
+          }
+        } //end group1 IF STATEMENT
+      } //end y loop
+
+    } //end x loop
+
+
+    for(int z = 0; z < group1New.size(); z++){
+      cout << group1New[z] << endl;
+    }
+
+  }
 
 
 
