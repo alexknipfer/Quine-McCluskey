@@ -107,6 +107,53 @@ void Simplifier::minimizeExpression(){
   int foundPairs = 0;
   char tempVariable;
   char tempVariable2;
+  string tempExpression;
+
+    //see if expressions exists in group0 and group1
+  if(group0.size() != 0 && group1.size() != 0){
+    for(int x = 0; x < group0.size(); x++){
+
+      for(int y = 0; y < group1.size(); y++){
+
+        if(group1Check[y] != "done"){
+
+          for(int x1 = 0; x1 < group0[x].length(); x1++){
+            if(group0[x][x1] != group1[y][x1]){
+              tempVariable = group0[x][x1];
+              tempVariable2 = group1[y][x1];
+              foundPairs++;
+            }
+          } //end x1 loop
+
+          if(foundPairs == 1){
+            for(int replace = 0; replace < group0[x].length(); replace++){
+              if(group0[x][replace] == tempVariable || group0[x][replace] == tempVariable2){
+                tempExpression += '_';
+              }
+              else{
+                tempExpression += group0[x][replace];
+              }
+            }
+            group0Check[x] = "done";
+            group1Check[y] = "done";
+            group0New.push_back(tempExpression);
+            tempExpression = "";
+            foundPairs = 0;
+          }
+
+        } //end group1 IF STATEMENT
+
+      } //end y loop
+      for(int z = 0; z < group0New.size(); z++){
+        cout << group0New[z] << endl;
+      }
+      cout << endl;
+    } //end x loop
+    
+  } //end if statement
+
+
+
   /*for(int x = 0; x < group0.size(); x++){
     cout << group0[x] << " " << group0Check[x];
   }
@@ -130,42 +177,6 @@ void Simplifier::minimizeExpression(){
   for(int x = 0; x < group5.size(); x++){
     cout << group5[x] << " " << group5Check[x];
   }*/
-
-    //see if expressions exists in group0 and group1
-  if(group0.size() != 0 && group1.size() != 0){
-    for(int x = 0; x < group0.size(); x++){
-
-      for(int y = 0; y < group1.size(); y++){
-
-        for(int x1 = 0; x1 < group0[x].length(); x1++){
-          if(group0[x][x1] != group1[y][x1]){
-            tempVariable = group0[x][x1];
-            tempVariable2 = group1[y][x1];
-            foundPairs++;
-          }
-        } //end x1 loop
-
-        if(foundPairs == 1){
-          for(int replace = 0; replace < group0[x].length(); replace++){
-            if(group0[x][replace] == tempVariable || group0[x][replace] == tempVariable2){
-              group0[x][replace] = '_';
-            }
-          }
-          group0Check[x] = "done";
-          group1Check[y] = "done";
-          group0New.push_back(group0[x]);
-        }
-
-
-
-      } //end y loop
-      for(int z = 0; z < group0New.size(); z++){
-        cout << group0New[z] << endl;
-      }
-      break;
-    } //end x loop
-
-  } //end if statement
 
 }
 
