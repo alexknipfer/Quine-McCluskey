@@ -32,4 +32,10 @@ class Simplifier{
     vector<string> group3Check;
     vector<string> group4Check;
     vector<string> group5Check;
+    vector<string> group0NewCheck;
+    vector<string> group1NewCheck;
+    vector<string> group2NewCheck;
+    vector<string> group3NewCheck;
+    vector<string> group4NewCheck;
+    vector<string> group5NewCheck;
 };
