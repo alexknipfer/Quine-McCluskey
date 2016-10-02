@@ -38,4 +38,5 @@ class Simplifier{
     vector<string> group3NewCheck;
     vector<string> group4NewCheck;
     vector<string> group5NewCheck;
+    vector<string> finalExpressions;
 };

@@ -109,6 +109,7 @@ void Simplifier::minimizeExpression(){
   char tempVariable;
   char tempVariable2;
   string tempExpression;
+  bool doneSorting = false;
 
     //see if expressions exists in group0 and group1
   if(group0.size() != 0 && group1.size() != 0){
@@ -284,6 +285,37 @@ void Simplifier::minimizeExpression(){
 
     } //end x loop
 
+  }
+
+  for(int x = 0; x < group0Check.size(); x++){
+    if(group0Check[x] != "done"){
+      finalExpressions.push_back(group0[x]);
+    }
+  }
+  for(int x = 0; x < group1Check.size(); x++){
+    if(group1Check[x] != "done"){
+      finalExpressions.push_back(group1[x]);
+    }
+  }
+  for(int x = 0; x < group2Check.size(); x++){
+    if(group2Check[x] != "done"){
+      finalExpressions.push_back(group2[x]);
+    }
+  }
+  for(int x = 0; x < group3Check.size(); x++){
+    if(group3Check[x] != "done"){
+      finalExpressions.push_back(group3[x]);
+    }
+  }
+  for(int x = 0; x < group4Check.size(); x++){
+    if(group4Check[x] != "done"){
+      finalExpressions.push_back(group4[x]);
+    }
+  }
+  for(int x = 0; x < group5Check.size(); x++){
+    if(group5Check[x] != "done"){
+      finalExpressions.push_back(group5[x]);
+    }
   }
 
   group0.clear();
@@ -475,6 +507,41 @@ void Simplifier::minimizeExpression(){
     } //end x loop
 
   } //end if statement
+
+  /*for(int x = 0; x < group0NewCheck.size(); x++){
+    if(group0NewCheck[x] != "done"){
+      finalExpressions.push_back(group0New[x]);
+    }
+  }
+  for(int x = 0; x < group1NewCheck.size(); x++){
+    if(group1NewCheck[x] != "done"){
+      finalExpressions.push_back(group1New[x]);
+    }
+  }
+  for(int x = 0; x < group2NewCheck.size(); x++){
+    if(group2NewCheck[x] != "done"){
+      finalExpressions.push_back(group2New[x]);
+    }
+  }
+  for(int x = 0; x < group3NewCheck.size(); x++){
+    if(group3NewCheck[x] != "done"){
+      finalExpressions.push_back(group3New[x]);
+    }
+  }
+  for(int x = 0; x < group4NewCheck.size(); x++){
+    if(group4NewCheck[x] != "done"){
+      finalExpressions.push_back(group4New[x]);
+    }
+  }
+  for(int x = 0; x < group5NewCheck.size(); x++){
+    if(group5NewCheck[x] != "done"){
+      finalExpressions.push_back(group5New[x]);
+    }
+  }
+
+  for(int x = 0; x < finalExpressions.size(); x++){
+    cout << finalExpressions[x] << endl;
+  }*/
 
   for(int z = 0; z < group0New.size(); z++){
     cout << group0New[z] << " " << group0NewCheck[z] << endl;
