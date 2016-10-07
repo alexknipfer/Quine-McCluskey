@@ -10,9 +10,12 @@ class Simplifier{
     void getExpression(ifstream &);
     void groupExpression(vector<string>);
     void minimizeExpression();
+    void createMatrix();
 
   private:
     int expressionSize;
+    int numOfExpressions;
+    vector<int> matrixY;
     vector<string> myExpression;
     vector<string> group0;
     vector<string> group0New;
