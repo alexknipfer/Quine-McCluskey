@@ -1,3 +1,30 @@
+//******************  PROGRAM IDENTIFICATION  **********************************
+//*                                                                            *
+//*  PROGRAM FILE NAME: program1.cpp  ASSIGNMENT #:  1    GRADE: _____         *
+//*   	                                                                       *
+//*  PROGRAM AUTHOR:   ____________________________________                    *
+//*                             Alex Knipfer                                   *
+//*                                                                            *
+//*  COURSE #:   CSC 40300 21             DUE DATE: October 17, 2016           *
+//*                                                                            *
+//******************************************************************************
+
+
+//********************* PROGRAM DESCRIPTION ************************************
+//*    Process: This program uses the Quine-McKluskey method to minimalize any *
+//*             read in boolean expression.                                    *
+//*                                                                            *
+//*    USER DEFINED                                                            *
+//*     MODULES:       : printHeader - print program header                    *
+//*                      printFooter - print program footer                    *
+//*                      processPassengers - reads in passenger data from data *
+//*                                          file                              *
+//*                      initializeSeating - sets all seats to empty (-999)    *
+//*                      addPassengers - adds passengers to seating chart      *
+//*                      printSeatingChart - prints seating chart              *
+//*                      printWaitingList - prints waiting list                *
+//******************************************************************************
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -11,11 +38,18 @@ using namespace std;
 int main(){
   Simplifier mySimplifier;
 
-    //variables for input file
+    //variables for input file and output file
   ifstream inputFile("data1.txt");
+  ofstream outputFile("output.txt");
+
+    //print header
+  mySimplifier.printHeader(outputFile);
 
     //get the expression from input file
-  mySimplifier.getExpression(inputFile);
+  mySimplifier.getExpression(inputFile, outputFile);
+
+    //print footer
+  mySimplifier.printFooter(outputFile);
 }
 
 //******************************************************************************
@@ -39,12 +73,11 @@ Simplifier::Simplifier(){
 
 //******************************************************************************
 
-void Simplifier::getExpression(ifstream &inputFile){
+void Simplifier::getExpression(ifstream &inputFile, ofstream &outputFile){
     //Receives - input file
     //Task - read input from data file
     //Returns - nothing
 
-  ofstream outputFile("output.txt");
   string expression;
 
     //read in parts of expression from input file
@@ -948,3 +981,36 @@ void Simplifier::printExpressions(ofstream &outputFile){
   outputFile << endl;
 }
 //******************************************************************************
+
+
+void Simplifier::printHeader(ofstream &Outfile)
+{
+		//Receives - the output file
+		//Task- Prints the output preamble
+		//Returns - Nothing
+	Outfile << setw(30) << "Alex Knipfer ";
+	Outfile << setw(17) << "CSC 40300";
+	Outfile << setw(15) << "Section 21" << endl;
+	Outfile << setw(30) << "Fall 2016";
+	Outfile << setw(20) << "Assignment #1" << endl;
+	Outfile << setw(35) << "--------------------------------------";
+	Outfile << setw(35) << "--------------------------------------\n\n";
+	return;
+}
+
+//****************************************************************************//
+
+void Simplifier::printFooter(ofstream &Outfile)
+{
+    //Receives - the output file
+    //Task - Prints the output footer
+    //Returns - nothing
+	Outfile << endl;
+	Outfile << setw(35) << "--------------------------------" << endl;
+	Outfile << setw(35) << "|    END OF PROGRAM OUTPUT     |" << endl;
+	Outfile << setw(35) << "--------------------------------" << endl;
+
+	return;
+}
+
+//*********************** END OF PROGRAM *************************************//

@@ -1,8 +1,12 @@
+                 Alex Knipfer         CSC 40300     Section 21
+                     Fall 2016       Assignment #1
+----------------------------------------------------------------------------
+
 The Original Boolean Expression is:
 (ABC) + (Abc) + (ABc) + (AbC) + (abC) + (aBc)
 
 The Minimized Boolean Expression is:
-(AB_) + (_Bc) + (_bC) + (A__)
+(Bc) + (bC) + (A)
 
 **************************************************************
 
@@ -10,7 +14,7 @@ The Original Boolean Expression is:
 (ABCD) + (ABcD) + (ABcd) + (AbCD) + (aBCD) + (aBCd) + (aBcD) + (abcD)
 
 The Minimized Boolean Expression is:
-(AB_D) + (A_CD) + (ABc_) + (aBC_) + (a_cD) + (_B_D)
+(ACD) + (ABc) + (aBC) + (acD)
 
 **************************************************************
 
@@ -18,7 +22,7 @@ The Original Boolean Expression is:
 (aBcDEf) + (ABcdEF) + (AbCdEF) + (ABCdEF) + (aBCDEf) + (ABCDEF) + (ABcdEf) + (AbCDEF) + (aBcDef)
 
 The Minimized Boolean Expression is:
-(ABC_EF) + (AB_dEF) + (ABcdE_) + (aB_DEf) + (aBcD_f) + (A_C_EF)
+(aBDEf) + (aBcDf) + (ABcdE) + (ACEF)
 
 **************************************************************
 
@@ -26,7 +30,7 @@ The Original Boolean Expression is:
 (abcde) + (AbCde) + (ABcdE) + (abCde) + (aBCDE) + (Abcde) + (abCDE) + (abCDe) + (aBcDE) + (ABCDE) + (AbCDe)
 
 The Minimized Boolean Expression is:
-(ABcdE) + (_BCDE) + (a_CDE) + (aB_DE) + (abCD_) + (AbC_e) + (_bCde) + (_b_de)
+(aBDE) + (BCDE) + (bde) + (bCe)
 
 **************************************************************
 
@@ -34,7 +38,7 @@ The Original Boolean Expression is:
 (aBCdE) + (ABCde) + (ABcde) + (aBcdE) + (ABcDe) + (ABCdE) + (AbCde) + (AbCdE)
 
 The Minimized Boolean Expression is:
-(ABcDe) + (_BCdE) + (ABCd_) + (aB_dE) + (AB_de) + (A_Cd_)
+(aBdE) + (ABce) + (ACd)
 
 **************************************************************
 
@@ -42,7 +46,11 @@ The Original Boolean Expression is:
 (abCd) + (aBcd) + (Abcd) + (AbcD) + (abCD) + (aBCD) + (abcD) + (aBCd)
 
 The Minimized Boolean Expression is:
-(a_CD) + (Abc_) + (_bcD) + (aB_d) + (a_C_)
+(aBd) + (Abc) + (aC)
 
 **************************************************************
 
+
+   --------------------------------
+   |    END OF PROGRAM OUTPUT     |
+   --------------------------------

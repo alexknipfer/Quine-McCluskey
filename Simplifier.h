@@ -9,7 +9,9 @@ using namespace std;
 class Simplifier{
   public:
     Simplifier();
-    void getExpression(ifstream &);
+    void printHeader(ofstream &);
+    void printFooter(ofstream &);
+    void getExpression(ifstream &, ofstream &);
     void groupExpression(vector<string>);
     void minimizeExpression();
     void createMatrix();
