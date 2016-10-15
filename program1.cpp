@@ -17,12 +17,14 @@
 //*    USER DEFINED                                                            *
 //*     MODULES:       : printHeader - print program header                    *
 //*                      printFooter - print program footer                    *
-//*                      processPassengers - reads in passenger data from data *
-//*                                          file                              *
-//*                      initializeSeating - sets all seats to empty (-999)    *
-//*                      addPassengers - adds passengers to seating chart      *
-//*                      printSeatingChart - prints seating chart              *
-//*                      printWaitingList - prints waiting list                *
+//*                      getExpression - reads in current expression from file *
+//*                      groupExpression - groups expression                   *
+//*                      minimizeExpression - simplifies expression using the  *
+//*                                           Quine-McKluskey algorithm        *
+//*                      createMatrix - adds X vector values to the y axis of  *
+//*                                     matrix                                 *
+//*                      printExpressions - prints the final expressions from  *
+//*                                         vector                             *
 //******************************************************************************
 
 #include <iostream>
