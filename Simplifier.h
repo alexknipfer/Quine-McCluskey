@@ -4,6 +4,8 @@
 
 using namespace std;
 
+  //class contains functions and variables for simplifying
+  //boolean expressions
 class Simplifier{
   public:
     Simplifier();
@@ -11,10 +13,12 @@ class Simplifier{
     void groupExpression(vector<string>);
     void minimizeExpression();
     void createMatrix();
+    void printExpressions(ofstream &);
 
   private:
     int expressionSize;
     int numOfExpressions;
+    char matrix[15][15];
     vector<int> matrixY;
     vector<string> myExpression;
     vector<string> group0;

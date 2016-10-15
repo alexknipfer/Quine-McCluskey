@@ -11,16 +11,30 @@ using namespace std;
 int main(){
   Simplifier mySimplifier;
 
+    //variables for input file
   ifstream inputFile("data1.txt");
 
+    //get the expression from input file
   mySimplifier.getExpression(inputFile);
 }
 
 //******************************************************************************
 
 Simplifier::Simplifier(){
+  //Receives - nothing
+  //Task - Constructor - initialize matrix and expressions counts
+  //Returns - nothing
+
+    //initialize counts
   expressionSize = 0;
   numOfExpressions = 0;
+
+    //intialize matrix for final expressions
+  for(int x = 0; x < 15; x++){
+    for(int y = 0; y < 15; y++){
+      matrix[x][y] = 'y';
+    }
+  }
 }
 
 //******************************************************************************
@@ -30,6 +44,7 @@ void Simplifier::getExpression(ifstream &inputFile){
     //Task - read input from data file
     //Returns - nothing
 
+  ofstream outputFile("output.txt");
   string expression;
 
     //read in parts of expression from input file
@@ -41,9 +56,13 @@ void Simplifier::getExpression(ifstream &inputFile){
       //expression is complete once x is read in
     if(expression == "X"){
       groupExpression(myExpression);    //go group by compliments
-      minimizeExpression();
-      createMatrix();
+      minimizeExpression();             //minimalize current expression
+      createMatrix();                   //generate y axis for matrix
+      printExpressions(outputFile);     //print the expressions
+
+        //clear expression vectors and groups for next expression
       myExpression.clear();
+      finalExpressions.clear();
       group0.clear();
       group1.clear();
       group2.clear();
@@ -53,9 +72,12 @@ void Simplifier::getExpression(ifstream &inputFile){
       inputFile >> expression;
       numOfExpressions = 0;
     }
+      //keep reading in expressions since "S" is not reached
     else{
+        //add expression to vector
       myExpression.push_back(expression);
       numOfExpressions++;
+        //get size of vector for amount of expressions
       expressionSize = expression.size();
       inputFile >> expression;
     }
@@ -109,14 +131,24 @@ void Simplifier::groupExpression(vector<string> myExpression){
 //******************************************************************************
 
 void Simplifier::minimizeExpression(){
+  //Receives - nothing
+  //Task - minimalize current read in expression and add to finalExpressions
+  //Returns - nothing
+
+      //intialize all counts to 0
   int foundPairs = 0;
   int totalPairs = 0;
   int doneCount = 0;
+
+    //holds values of characters in expression while iterating
   char tempVariable;
   char tempVariable2;
   string tempExpression;
+
+    //initialize to false until complete sorting
   bool doneSorting = false;
 
+      //continue sorting until done
   while(doneSorting == false){
         //see if expressions exists in group0 and group1
       if(group0.size() != 0 && group1.size() != 0){
@@ -160,6 +192,7 @@ void Simplifier::minimizeExpression(){
                 group0Check[x] = "done";  //expression is complete
                 group1Check[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group0New.push_back(tempExpression);  //add new expression to vector
                 group0NewCheck.push_back("X");
 
@@ -220,6 +253,7 @@ void Simplifier::minimizeExpression(){
                 group1Check[x] = "done";  //expression is complete
                 group2Check[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group1New.push_back(tempExpression);  //expression is complete
                 group1NewCheck.push_back("X");
 
@@ -278,6 +312,7 @@ void Simplifier::minimizeExpression(){
                 group2Check[x] = "done";  //expression is complete
                 group3Check[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group2New.push_back(tempExpression);  //expression is complete
                 group2NewCheck.push_back("X");
 
@@ -336,6 +371,7 @@ void Simplifier::minimizeExpression(){
                 group3Check[x] = "done";  //expression is complete
                 group4Check[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group3New.push_back(tempExpression);  //expression is complete
                 group3NewCheck.push_back("X");
 
@@ -394,6 +430,7 @@ void Simplifier::minimizeExpression(){
                 group4Check[x] = "done";  //expression is complete
                 group5Check[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group4New.push_back(tempExpression);  //expression is complete
                 group4NewCheck.push_back("X");
 
@@ -514,6 +551,7 @@ void Simplifier::minimizeExpression(){
                 group0NewCheck[x] = "done";  //expression is complete
                 group1NewCheck[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group0.push_back(tempExpression);  //add new expression to vector
                 group0Check.push_back("X");
 
@@ -577,6 +615,7 @@ void Simplifier::minimizeExpression(){
                 group1NewCheck[x] = "done";  //expression is complete
                 group2NewCheck[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group1.push_back(tempExpression);  //add new expression to vector
                 group1Check.push_back("X");
 
@@ -640,6 +679,7 @@ void Simplifier::minimizeExpression(){
                 group2NewCheck[x] = "done";  //expression is complete
                 group3NewCheck[y] = "done";  //expression is complete
                 doneCount++;
+                matrix[x][y] = 'X';
                 group2.push_back(tempExpression);  //add new expression to vector
                 group2Check.push_back("X");
 
@@ -703,6 +743,7 @@ void Simplifier::minimizeExpression(){
               group3NewCheck[x] = "done";  //expression is complete
               group4NewCheck[y] = "done";  //expression is complete
               doneCount++;
+              matrix[x][y] = 'X';
               group3.push_back(tempExpression);  //add new expression to vector
               group3Check.push_back("X");
 
@@ -766,6 +807,7 @@ void Simplifier::minimizeExpression(){
             group4NewCheck[x] = "done";  //expression is complete
             group5NewCheck[y] = "done";  //expression is complete
             doneCount++;
+            matrix[x][y] = 'X';
             group4.push_back(tempExpression);  //add new expression to vector
             group4Check.push_back("X");
 
@@ -850,20 +892,59 @@ void Simplifier::minimizeExpression(){
 
 //******************************************************************************
 void Simplifier::createMatrix(){
-  vector< vector<char> > matrix;
+    //Receives - nothing
+    //Task - go through current matrix of expressions and add to the
+    //         final expressions for printing
+    //Returns - nothing
 
   for(int x = 0; x < numOfExpressions; x++){
+      //keeps track of y axis (original expressions that they were a part of)
     matrixY.push_back(x);
   }
 
-  for(int x  = 0; x < matrixY.size(); x++){
-    cout << matrixY[x] << " ";
+}
+//******************************************************************************
+void Simplifier::printExpressions(ofstream &outputFile){
+  //Receives - nothing
+  //Task - print the original and minimalized expressions
+  //Returns - nothing
+
+    //print header note for expression
+  outputFile << "The Original Boolean Expression is:" << endl;
+
+    //go through original expressions to print
+  for(int x = 0; x < myExpression.size(); x++){
+    outputFile << "(";
+    outputFile << myExpression[x];
+      //print the + if it's not the end
+    if(x != myExpression.size() - 1){
+      outputFile << ") + ";
+    }
+    else{
+      outputFile << ")";
+    }
   }
-  cout << endl;
+  outputFile << endl;
+  outputFile << endl;
+
+    //go through final expressions to print
+  outputFile << "The Minimized Boolean Expression is:" << endl;
   for(int x = 0; x < finalExpressions.size(); x++){
-    cout << finalExpressions[x] << endl;
+    outputFile << "(";
+    outputFile << finalExpressions[x];
+      //print the + if it's not the end
+    if(x != finalExpressions.size() - 1){
+      outputFile << ") + ";
+    }
+    else{
+      outputFile << ")";
+    }
   }
-  cout << endl;
-  cout << numOfExpressions << endl;
+
+    //separate all the expressions
+  outputFile << endl;
+  outputFile << endl;
+  outputFile << "**************************************************************" << endl;
+  outputFile << endl;
 }
 //******************************************************************************
