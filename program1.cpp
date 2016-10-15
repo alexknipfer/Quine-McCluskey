@@ -249,11 +249,14 @@ void Simplifier::minimizeExpression(){
 
       } //end if statement
 
+        //see if expressions exist in group 1 and 2
       if(group1.size() != 0 && group2.size() != 0){
         for(int x = 0; x < group1.size(); x++){
 
+            //compare each group
           for(int y = 0; y < group2.size(); y++){
 
+                //make sure the expression is group isn't already complete
             if(group2Check[y] != "done"){
 
                 //go through expression to compare variables
@@ -308,11 +311,14 @@ void Simplifier::minimizeExpression(){
 
       }
 
+        //see if expressions exist in groups 2 and 3
       if(group2.size() != 0 && group3.size() != 0){
         for(int x = 0; x < group2.size(); x++){
 
+            //go through and compare groups
           for(int y = 0; y < group3.size(); y++){
 
+              //make sure expression in group isn't complete
             if(group3Check[y] != "done"){
 
                 //go through expression to compare variables
@@ -367,11 +373,14 @@ void Simplifier::minimizeExpression(){
 
       }
 
+          //see if expressions exist in groups 3 and 4
       if(group3.size() != 0 && group4.size() != 0){
         for(int x = 0; x < group3.size(); x++){
 
+            //go through and compare groups
           for(int y = 0; y < group4.size(); y++){
 
+              //make sure group isn't complete
             if(group4Check[y] != "done"){
 
                 //go through expression to compare variables
@@ -426,11 +435,14 @@ void Simplifier::minimizeExpression(){
 
       }
 
+          //see if expressions exist in groups 4 and 5
       if(group4.size() != 0 && group5.size() != 0){
         for(int x = 0; x < group4.size(); x++){
 
+            //go through groups and compare
           for(int y = 0; y < group5.size(); y++){
 
+              //make sure expression isn't complete
             if(group5Check[y] != "done"){
 
                 //go through expression to compare variables
